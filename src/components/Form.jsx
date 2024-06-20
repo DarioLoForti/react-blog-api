@@ -8,7 +8,7 @@ export default function ({tags, categories, onCreate}) {
 
     const defaultData = {
         title: '',
-        description: '',
+        content: '',
         image: '',
         categoryId: '',
         tags: [],
@@ -21,7 +21,7 @@ export default function ({tags, categories, onCreate}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(data);
-            const res = await axios.post(`${apiUrl}/posts`, formData, {
+            const res = await axios.post(`${apiUrl}/posts`, data, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -51,17 +51,17 @@ export default function ({tags, categories, onCreate}) {
                     />
                 </div>
                 <div className='form-text-area'>
-                    <label> Description </label><br />
+                    <label> Content </label><br />
                     <textarea
-                        value={data.description}
-                        onChange={(e) => changeData('description', e.target.value)}
+                        value={data.content}
+                        onChange={(e) => changeData('content', e.target.value)}
                     />
                 </div>
                 <div className='form-control'>
-                    <label> Url Image </label>
+                    <label> Image </label>
                     <input 
-                        type="text"
-                        value={data.image}
+                        type="file"
+                        // value={data.image}
                         onChange={(e) => changeData('image', e.target.value)}
                     />
                 </div>
