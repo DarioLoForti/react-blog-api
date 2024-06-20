@@ -51,7 +51,9 @@ export default function() {
             <Form
             tags={tags}
             categories={categories}
-            onCreate={() => fetchPosts()}
+            onCreate={() =>{
+                setShowCreateForm(false);
+                 fetchPosts()}}
             />
         }
             <Posts 
